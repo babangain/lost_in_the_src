@@ -1,9 +1,9 @@
-CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nproc_per_node=4 --master_port=5001 finetune_llama.py \
-    --model_name_or_path $MODEL_PATH_OR_NAME \
+CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node=2 --master_port=5001 finetune_llama.py \
+    --model_name_or_path unsloth/Llama-3.2-3B-Instruct \
     --data_path data/InsScore_data_nodup.json \
-    --fp16 False \
+    --fp16 True \
     --bf16 False \
-    --output_dir $OUTPUT_PATH \
+    --output_dir checkpoints \
     --num_train_epochs 3 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 1 \
